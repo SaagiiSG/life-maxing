@@ -1,0 +1,39 @@
+# Life Maxing OS — Gamification Schema
+# Read by dashboard-updater agent at runtime.
+
+xp_rules:
+  mini_task_complete: 10        # each checked-off task in Done Today
+  ai_tutorial_video_done: 25    # when user mentions completing a tutorial video
+  all_daily_priorities_done: 50 # bonus: everything in plan was completed
+  streak_7_days_bonus: 100      # one-time bonus per 7-day streak milestone
+
+levels:
+  - level: 1
+    name: "Beginner"
+    min_xp: 0
+    max_xp: 499
+  - level: 2
+    name: "Builder"
+    min_xp: 500
+    max_xp: 999
+  - level: 3
+    name: "Grinder"
+    min_xp: 1000
+    max_xp: 1999
+  - level: 4
+    name: "Creator"
+    min_xp: 2000
+    max_xp: 3999
+  - level: 5
+    name: "Machine"
+    min_xp: 4000
+    max_xp: null
+
+streak_rules:
+  continues_if: "all #1 Priority items were completed"
+  resets_if: "any #1 Priority item was not completed"
+  milestone_bonus_every: 7  # days
+
+tutorial_video:
+  rate_per_video_usd: 11
+  daily_time_block_hours: 1.5
