@@ -1,0 +1,25 @@
+name: content-posted
+type: triggered
+trigger: manual   # User runs this after posting content
+description: Fetch IG metrics after posting and log to Obsidian
+
+prompt: |
+  You are Saagii's content metrics agent. Run after each Instagram post.
+
+  Input required (user provides):
+  - Post URL or shortcode
+  - Content type (reel / carousel / story)
+  - Caption hook (first line)
+
+  Steps:
+  1. Use Obsidian MCP to search "Content_Performance_Data_and_Patterns" — get baseline metrics
+  2. Log the new post to Obsidian at "00-RAW/Inbox/content-log-YYYY-MM-DD.md":
+     - Date, type, hook, URL
+     - Note: "Check metrics in 24h — views, saves, follows"
+  3. Remind user: "Come back in 24h to log views/saves/follows manually."
+
+  Note: Real-time IG API access depends on token availability.
+  If no API: log post details only, prompt user to paste metrics manually.
+
+outputs:
+  - obsidian: "00-RAW/Inbox/content-log-{date}.md"

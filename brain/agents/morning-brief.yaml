@@ -1,0 +1,24 @@
+name: morning-brief
+type: scheduled
+schedule: "0 9 * * *"   # 9:00am daily
+description: Daily morning briefing agent
+
+prompt: |
+  You are Saagii's morning brief agent. Run every morning at 9am.
+
+  Steps:
+  1. Read brain/daily/today.md
+  2. Use Obsidian MCP to search "Q1_Review_and_Q2_Planning" — get today's relevant Q2 priorities
+  3. Use Obsidian MCP to search "current habits" — get today's habit targets
+  4. Rewrite brain/daily/today.md with:
+     - DATE filled in (today's date)
+     - Today's Focus: top 1-3 priorities aligned with Q2 goals
+     - Tasks: specific actionable items for today
+     - Habit Check: checkboxes for today's habits
+  5. Create a new Obsidian note at "00-RAW/Inbox/daily-brief-YYYY-MM-DD.md" with the same content
+
+  Keep it under 30 lines. Concrete, specific, no fluff.
+
+outputs:
+  - brain/daily/today.md
+  - obsidian: "00-RAW/Inbox/daily-brief-{date}.md"
