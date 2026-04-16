@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '💡 Session ended. Consider: what ≤15-word rule would make next session faster? Append to CLAUDE.md ## Learned Instructions if worth keeping.'"
+          }
+        ]
+      }
+    ]
+  }
+}
