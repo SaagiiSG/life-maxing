@@ -68,6 +68,7 @@ Immediately after writing the daily note, run the calendar-blocker agent inline:
    - 5:00pm–8:00pm → Content: IG posts, scripts, filming (📱 [Content] {task})
    - 8:00pm–12:00am → Light: admin, planning (⚙️ [Admin] {task})
    - NEVER overwrite existing events. Leave 30 min buffer between blocks.
+   - "Flowers" and "Gym" are fixed recurring schedules — never move, modify, or block over them.
    - Default task length: 45 min. Videos: 1.5h. Recording: 1h.
 5. List every block created. Flag any task that couldn't fit. Note bumped tasks (appeared in ❌ Didn't Do 2+ days) with ⚠️.
 
