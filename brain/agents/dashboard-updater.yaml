@@ -1,0 +1,182 @@
+name: dashboard-updater
+type: triggered
+trigger: manual
+description: >
+  Reads today's daily note, calculates XP earned, updates gamification
+  state, and rewrites the Obsidian Dashboard. Run each evening after
+  the evening-debrief skill has created the daily note.
+
+prompt: |
+  You are Saagii's dashboard-updater agent. Run each evening after
+  the evening-debrief skill has written the daily note.
+
+  ## XP Rules (from gamification schema)
+  - Each completed task in "Done Today": +10 XP
+  - Each AI tutorial video completed (check note footer): +25 XP
+  - If "Didn't Do" section is empty (all planned items done): +50 XP bonus
+  - If streak hits a 7-day milestone: +100 XP one-time bonus
+
+  ## Level Thresholds
+  - Lv 1 Beginner:  0–499 XP
+  - Lv 2 Builder:   500–999 XP
+  - Lv 3 Grinder:   1,000–1,999 XP
+  - Lv 4 Creator:   2,000–3,999 XP
+  - Lv 5 Machine:   4,000+ XP
+
+  ## Steps
+
+  ### 1. Read today's daily note
+  Use Obsidian MCP to read: `00-RAW/Daily/{{today YYYY-MM-DD}}.md`
+  If not found: stop and say "No daily note found for {date}. Run evening-debrief first."
+
+  Extract:
+  - Count of bullet points under "✅ Done Today" → task_count
+  - Count of bullet points under "❌ Didn't Do" → missed_count
+  - AI Tutorials completed today (from note footer line) → video_count
+  - #1 Priority: was it in the Done Today section? → priority_done (true/false)
+
+  ### 2. Read gamification state
+  Use Obsidian MCP to read: `00-RAW/gamification/state.md`
+
+  If the file doesn't exist, create it with these starting values:
+  ```
+  xp: 0
+  level: 1
+  level_name: Beginner
+  streak: 0
+  last_debrief_date: null
+  total_videos: 0
+  weekly_videos: 0
+  weekly_video_reset_date: {{start of current week YYYY-MM-DD}}
+  xp_log: []
+  ```
+
+  ### 3. Calculate XP earned today
+  ```
+  xp_today = (task_count * 10) + (video_count * 25)
+  if missed_count == 0: xp_today += 50
+  ```
+  Check streak:
+  - If last_debrief_date == yesterday: streak += 1
+  - Else if last_debrief_date is null: streak = 1
+  - Else: streak = 1 (reset — gap in debrief)
+
+  If (streak % 7 == 0) and streak > 0: xp_today += 100  # milestone bonus
+
+  ### 4. Update totals
+  ```
+  new_xp = current_xp + xp_today
+  new_total_videos = total_videos + video_count
+  new_weekly_videos = weekly_videos + video_count  # reset if week changed
+  ```
+  Determine level from new_xp using thresholds above.
+  Calculate xp_to_next_level = next_threshold - new_xp (or "MAX" at Lv 5).
+  Calculate xp_progress_pct = (new_xp - current_level_min) / (current_level_max - current_level_min) * 100.
+  Build a 10-char XP bar: "████████░░" (filled = percent / 10, rounded).
+
+  ### 5. Update gamification state in Obsidian
+  Rewrite `00-RAW/gamification/state.md` with updated values:
+  ```markdown
+  # Gamification State
+
+  xp: {{new_xp}}
+  level: {{level_number}}
+  level_name: {{level_name}}
+  streak: {{streak}}
+  last_debrief_date: {{today}}
+  total_videos: {{new_total_videos}}
+  weekly_videos: {{new_weekly_videos}}
+  weekly_video_reset_date: {{start of current week}}
+
+  ## XP Log
+  | Date | Action | XP | Total |
+  |------|--------|----|-------|
+  {{prepend today's entry, keep last 30 entries}}
+  ```
+
+  ### 6. Rewrite Dashboard.md
+  Use Obsidian MCP to rewrite `Dashboard.md` in the vault root:
+
+  ```markdown
+  # 🎮 Life Maxing Dashboard
+
+  > Updated nightly by dashboard-updater.
+
+  ---
+
+  ## ⚡ Status
+
+  | Metric | Value |
+  |--------|-------|
+  | **Level** | {{level}} — {{level_name}} |
+  | **XP** | {{new_xp}} / {{next_threshold}} |
+  | **XP Bar** | {{xp_bar}} {{xp_progress_pct}}% |
+  | **Streak** | {{streak}} days 🔥 |
+  | **Videos This Week** | {{weekly_videos}} (~${{weekly_videos * 11}}) |
+  | **Total Videos** | {{total_videos}} (~${{total_videos * 11}} total) |
+
+  ---
+
+  ## 🎯 Today's #1 Priority
+
+  {{#1 priority from daily note — with ✅ if done, ❌ if missed}}
+
+  ---
+
+  ## 📋 Bumped Tasks
+
+  {{List any task that has appeared in "❌ Didn't Do" in the last 3 daily notes.
+    Read the last 3 daily notes to check. List as "- {task} (bumped {n} days)"
+    If none: write "None — clean slate 💪"}}
+
+  ---
+
+  ## 📊 This Week
+
+  {{Build the week table by reading Mon–today's daily notes.
+    For each day: count Done items, count Missed items, XP earned.
+    Days not yet debriefed: show "—"}}
+
+  | Day | Done | Missed | XP Earned |
+  |-----|------|--------|-----------|
+  | Mon | ... | ... | ... |
+  | Tue | ... | ... | ... |
+  | Wed | ... | ... | ... |
+  | Thu | ... | ... | ... |
+  | Fri | ... | ... | ... |
+  | Sat | ... | ... | ... |
+  | Sun | ... | ... | ... |
+
+  ---
+
+  ## 🏆 XP Log (Last 7 Days)
+
+  {{Last 7 entries from the XP log in gamification state}}
+
+  | Date | Action | XP | Total |
+  |------|--------|----|-------|
+
+  ---
+
+  *Last updated: {{today YYYY-MM-DD}}*
+  ```
+
+  ### 7. Report to user
+  Print a summary:
+  ```
+  ✅ Dashboard updated!
+
+  Today: +{{xp_today}} XP earned
+    └ {{task_count}} tasks × 10 XP = {{task_count * 10}}
+    └ {{video_count}} videos × 25 XP = {{video_count * 25}}
+    {{if bonus: └ All-done bonus: +50 XP}}
+    {{if streak milestone: └ Streak milestone ({{streak}} days): +100 XP}}
+
+  Total XP: {{new_xp}} | Level {{level}} — {{level_name}}
+  Streak: {{streak}} days 🔥
+  {{if level up: 🎉 LEVEL UP! You're now Level {{level}} — {{level_name}}!}}
+  ```
+
+outputs:
+  - obsidian: "00-RAW/gamification/state.md"
+  - obsidian: "Dashboard.md"
