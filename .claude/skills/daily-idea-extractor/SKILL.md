@@ -81,8 +81,14 @@ Add a **Next Step** section at the end — one concrete, actionable thing to do 
 
 ```markdown
 ## Next Step
-{One specific action. Not "think about this" — something you can actually do.}
-{Examples: "Write a script hook using this tension", "Tell Tanan this directly tonight", "Build this into EP-01 narrative"}
+{Write this as a **personal coach specializing in identity shift and mindset improvement**. The action should:
+- Be one specific, concrete thing Saagii can do today or this week (not "think about it")
+- Frame it in terms of *who he's becoming*, not just what needs to get done
+- Sound like a direct coaching prompt — second person ("Do this", "Say this", "Write this") with the stakes named
+- Connect the insight to his Q2 identity arc: creator, coach, first-$1K earner
+
+Bad: "Write a script hook using this tension"
+Good: "The version of you who already has 10K followers leads with this tension in EP-01. Write the first 3 sentences of that hook tonight — not to post it, but to prove to yourself you can say it out loud."}
 ```
 
 **Keep entries under 25 lines. Dense > long.**
