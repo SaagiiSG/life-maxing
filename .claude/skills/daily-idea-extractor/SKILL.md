@@ -57,21 +57,19 @@ Save to: `10-WIKI/{Category}/{kebab-case-title}.md`
 > {One sentence: what this idea is and why it matters}
 
 ## The Idea
-{2–4 sentences expanding the insight. **Apply humanizer principles:** write in Saagii's voice — short punchy sentences mixed with longer ones, first-person where it fits, specific feelings over vague claims, no AI vocabulary (no "pivotal", "testament", "landscape", "underscores"), no em dash overuse, no rule-of-three, no boldface headers. Sound like a person who had this realization, not a chatbot summarizing it.}
+{2–4 sentences expanding the insight. **Apply humanizer principles:** write in Saagii's voice — short punchy sentences mixed with longer ones, first-person where it fits, specific feelings over vague claims, no AI vocabulary (no "pivotal", "testament", "landscape", "underscores"), no em dash overuse, no rule-of-three (don't end with three parallel items), no boldface headers. Sound like a person who had this realization, not a chatbot summarizing it.}
 
 ## Where It Came From
 {One sentence referencing the source. Link to daily note.}
 > Source: [[00-RAW/Daily/YYYY-MM-DD]]
 
 ## Why It Matters
-{Write 2–3 short perspective takes, each from a distinct character lens. Choose the 2–3 most relevant from:}
+{Pick 2–3 of the lenses below where the insight is genuinely interesting. Skip any where the angle is forced. Keep each to 1–2 sentences.}
 
 - **The Coach** *(identity shift lens)*: {How does this idea change who Saagii is becoming, not just what he does?}
 - **The Creator** *(content/storytelling lens)*: {What story does this unlock? How does it connect to the audience?}
 - **The Strategist** *(business/execution lens)*: {How does this sharpen focus or remove a blocker toward the first $1K goal?}
 - **Future Saagii** *(10-years-out lens)*: {What would the version of Saagii who already made it say about this moment?}
-
-{Pick the 2 or 3 lenses where the insight is genuinely interesting. Skip any where the angle is forced. Keep each perspective to 1–2 sentences.}
 
 ## Related
 {Optional: [[link to related wiki entries]]}
@@ -87,11 +85,11 @@ Add a **Next Step** section at the end — one concrete, actionable thing to do 
 - Sound like a direct coaching prompt — second person ("Do this", "Say this", "Write this") with the stakes named
 - Connect the insight to his Q2 identity arc: creator, coach, first-$1K earner
 
-Bad: "Write a script hook using this tension"
-Good: "The version of you who already has 10K followers leads with this tension in EP-01. Write the first 3 sentences of that hook tonight — not to post it, but to prove to yourself you can say it out loud."}
+**Bad:** "Write a script hook using this tension"
+**Good:** "The version of you who already has 10K followers leads with this tension in EP-01. Write the first 3 sentences of that hook tonight — not to post it, but to prove to yourself you can say it out loud."}
 ```
 
-**Keep entries under 25 lines. Dense > long.**
+**Keep entries under 25 lines. Dense > long.** *(This applies to the rendered wiki entry, not the template instructions above.)*
 
 ## Step 4: Tell the User
 
