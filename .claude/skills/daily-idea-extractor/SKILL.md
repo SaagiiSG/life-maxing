@@ -91,6 +91,10 @@ Add a **Next Step** section at the end — one concrete, actionable thing to do 
 
 **Keep entries under 25 lines. Dense > long.** *(This applies to the rendered wiki entry, not the template instructions above.)*
 
+## Step 3.5: Link to Existing Outputs
+
+After saving the wiki entry, invoke the `wiki-output-linker` skill. It will scan `20-OUTPUTS/` and add links to any existing files that genuinely connect to this idea. Do not create new output files — only link to what already exists.
+
 ## Step 4: Tell the User
 
 After writing, output:
