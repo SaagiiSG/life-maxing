@@ -64,7 +64,14 @@ Save to: `10-WIKI/{Category}/{kebab-case-title}.md`
 > Source: [[00-RAW/Daily/YYYY-MM-DD]]
 
 ## Why It Matters
-{One sentence on what this changes or clarifies.}
+{Write 2–3 short perspective takes, each from a distinct character lens. Choose the 2–3 most relevant from:}
+
+- **The Coach** *(identity shift lens)*: {How does this idea change who Saagii is becoming, not just what he does?}
+- **The Creator** *(content/storytelling lens)*: {What story does this unlock? How does it connect to the audience?}
+- **The Strategist** *(business/execution lens)*: {How does this sharpen focus or remove a blocker toward the first $1K goal?}
+- **Future Saagii** *(10-years-out lens)*: {What would the version of Saagii who already made it say about this moment?}
+
+{Pick the 2 or 3 lenses where the insight is genuinely interesting. Skip any where the angle is forced. Keep each perspective to 1–2 sentences.}
 
 ## Related
 {Optional: [[link to related wiki entries]]}
