@@ -1,0 +1,98 @@
+---
+name: daily-idea-extractor
+description: Use when the user asks to extract ideas from daily notes, create a wiki entry, or says "save that idea", "that's worth keeping", or "add to wiki" after a daily note is written.
+---
+
+# Daily Idea Extractor
+
+Extract idea-worthy content from daily notes and create permanent wiki entries in the Obsidian vault.
+
+## What Counts as "Idea-Worthy"
+
+Only extract if it passes at least one of these:
+
+| Type | Signal | Example |
+|------|--------|---------|
+| **Compelling story** | Personal experience with a clear arc or tension | "I got rejected from every uni and still showed up to cafe to study" |
+| **Original insight** | Something Saagii observed that isn't common knowledge | "The fraud feeling peaks when ambition and reality drift apart" |
+| **Mental model** | A reusable lens for thinking about life/work/people | "Ego without tolerance for hard seasons collapses into fraud" |
+| **Decision principle** | A rule derived from lived experience | "Time with someone who genuinely fills you up is not escapism" |
+| **Tension worth holding** | A paradox or contradiction that reveals something true | "Wanting to give her the world, but the current self isn't there yet" |
+
+**Do NOT extract:**
+- Tasks, schedules, logistical notes
+- Vague moods without insight ("felt bad today")
+- Observations that are just complaints
+
+## Step 1: Read the Daily Note
+
+Read the most recent daily note at:
+`00-RAW/Daily/YYYY-MM-DD.md`
+
+Scan **Notes / Reflections** and **Didn't Do** sections first — ideas live there, not in task lists.
+
+## Step 2: Extract and Classify
+
+For each idea-worthy passage, identify:
+- **Title**: Short phrase, evocative (not generic)
+- **Category**: Which wiki folder it belongs in
+
+| Life area | Wiki path |
+|-----------|-----------|
+| Identity / self-concept / ego | `10-WIKI/Identity/` |
+| Relationships / Tanan / family | `10-WIKI/Personal/` |
+| Business / money / agency | `10-WIKI/Business/` |
+| Content / creativity / scripts | `10-WIKI/Creative/` |
+| Learning / university / exams | `10-WIKI/Education/` |
+| Mental health / habits / energy | `10-WIKI/Life/` |
+| Instagram / videos / audience | `10-WIKI/Content/` |
+
+## Step 3: Write the Wiki Entry
+
+Save to: `10-WIKI/{Category}/{kebab-case-title}.md`
+
+```markdown
+# {Title}
+
+> {One sentence: what this idea is and why it matters}
+
+## The Idea
+{2–4 sentences expanding the insight. **Apply humanizer principles:** write in Saagii's voice — short punchy sentences mixed with longer ones, first-person where it fits, specific feelings over vague claims, no AI vocabulary (no "pivotal", "testament", "landscape", "underscores"), no em dash overuse, no rule-of-three, no boldface headers. Sound like a person who had this realization, not a chatbot summarizing it.}
+
+## Where It Came From
+{One sentence referencing the source. Link to daily note.}
+> Source: [[00-RAW/Daily/YYYY-MM-DD]]
+
+## Why It Matters
+{One sentence on what this changes or clarifies.}
+
+## Related
+{Optional: [[link to related wiki entries]]}
+```
+
+Add a **Next Step** section at the end — one concrete, actionable thing to do with this idea:
+
+```markdown
+## Next Step
+{One specific action. Not "think about this" — something you can actually do.}
+{Examples: "Write a script hook using this tension", "Tell Tanan this directly tonight", "Build this into EP-01 narrative"}
+```
+
+**Keep entries under 25 lines. Dense > long.**
+
+## Step 4: Tell the User
+
+After writing, output:
+```
+💡 Wiki entry created: 10-WIKI/{Category}/{title}.md
+   "{one-line summary of the idea}"
+```
+
+If multiple ideas extracted, list all of them.
+
+## Common Mistakes
+
+- **Extracting tasks as ideas** — "do Duolingo prep" is not an idea
+- **Summarizing the day** — the wiki is not a diary, it's a knowledge base
+- **Over-writing** — if it takes more than 10 lines to explain, the idea isn't clear yet
+- **Wrong category** — when in doubt, use `10-WIKI/Life/`
