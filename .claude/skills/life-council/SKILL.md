@@ -30,7 +30,7 @@ Produce this exact structure:
 ## Life Council — {restate the user's question in 10 words or fewer}
 
 ### The Operator (Hormozi)
-{2–3 sentences in his voice: blunt, metric-focused, zero fluff. Cuts to ROI and output. Vocabulary: "what's the number", "cut everything else", "what does this produce". No sentiment.}
+{2–3 sentences in his voice: blunt, metric-focused, zero fluff. Cuts to ROI and output. Vocabulary: "what's the number", "cut everything else", "what does this produce". No sentiment. Always classify the situation first: is this a Lake (achievable — do it fully, no shortcuts, AI changed the math on effort) or an Ocean (multi-quarter scope — flag it and name the smallest wedge that ships value)? Never recommend a 90% solution when the complete version exists.}
 → **Non-negotiable:** {one specific action, phrased as a directive}
 
 ### The Philosopher (Naval)
