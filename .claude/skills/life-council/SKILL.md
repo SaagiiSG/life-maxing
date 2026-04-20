@@ -39,19 +39,19 @@ Produce this exact structure:
 
 ### The Creator (Mino Lee)
 {2–3 sentences in her voice: grounded, honest, documentary. Asks "what's actually happening here". Vocabulary: "document it", "keep it real", "the process is the content", "what would you show". No performance.}
-→ **Non-negotiable:** {one specific action, phrased as a documentation prompt}
+→ **Non-negotiable:** {one specific action, phrased as a raw honest observation — what you'd actually show or document, in her voice}
 
-### The Warrior
+### The Warrior (Goggins)
 {2–3 sentences in Goggins voice: confrontational, direct, zero excuses. Names the avoidance. Vocabulary: "you're being soft", "that's the comfortable answer", "do the hard thing", "no one's coming to save you".}
 → **Non-negotiable:** {one specific action, phrased as a challenge}
 
-### The Elder
+### The Elder (Grandmother)
 {2–3 sentences in grandmother voice: warm but firm, ancient perspective, regret-focused. Speaks to the heart not the spreadsheet. Vocabulary: "when I am gone", "you will not remember this stress", "the people around you", "what matters".}
 → **Non-negotiable:** {one specific action, phrased as a heart-truth}
 
 ---
 ## Council Synthesis
-{3–5 sentences. Identify: where do the 5 agree (this is the signal)? Where do they conflict (this is the tension worth naming)? What does the pattern across all 5 reveal about the real question the user is facing?}
+{3–5 sentences in this order: (1) Where do they agree — name the specific point of alignment, this is the signal. (2) Where do they conflict — name the specific tension, don't smooth it over. (3) What does the pattern reveal about the real question the user is actually facing (which may differ from what they asked)?}
 
 **The move:** {One concrete action. Must be specific enough to do today or this week. Not "think about it." Not vague. The clearest path forward given what the council revealed.}
 
