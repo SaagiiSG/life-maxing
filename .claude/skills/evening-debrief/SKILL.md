@@ -33,6 +33,9 @@ Build two lists:
 - `done_tasks` — all tasks where done = true
 - `undone_tasks` — all tasks where done = false
 
+After building the two lists, also set:
+- `total` = len(done_tasks) + len(undone_tasks)
+
 ## Step 2: Calculate and update XP
 
 **XP rules:**
@@ -68,8 +71,6 @@ last_debrief_date: null
 - Build XP bar (10 chars): ████░░░░░░ — filled = floor((xp % level_range) / level_range × 10)
 - `last_debrief_date` = today's date
 
-Write the updated values back to `00-RAW/gamification/state.md` via Obsidian MCP.
-
 ## Step 3: Accountability check
 
 Display the undone tasks list to the user:
@@ -92,8 +93,17 @@ Process their answers:
 - **drop** → acknowledge, no Notion change.
 
 After processing, update:
-- `done_final` = original done_tasks count + newly ticked tasks
-- `undone_final` = tasks that were moved or dropped (not completed)
+- `done_final` = len(done_tasks) + count of tasks where user answered "done" in this step
+
+**Write final XP state:**
+Now that all XP mutations from Steps 2 and 3 are complete, write the updated values to `00-RAW/gamification/state.md` via Obsidian MCP:
+- `xp` = previous_xp + xp_today (including any additions from Step 3 task ticks)
+- `streak`, `last_debrief_date`, `level`, `level_name` as calculated in Step 2
+
+Before writing, compute:
+- `old_level` = the level determined at the START of Step 2 (before adding xp_today)
+- `new_level` = the level determined from the new total XP
+- If `new_level > old_level`, set `level_up = true` (used in Step 5 summary)
 
 ## Step 4: Plan tomorrow
 
