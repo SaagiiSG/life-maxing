@@ -107,6 +107,7 @@ After processing, update:
    - Mentions "gym", "workout", "physique" → Physique
    - Mentions "post", "content", "IG", "film", "script" → Content
    - Mentions "SAT", "university", "academic", "tutor", "Duolingo" → Academic
+   - Mentions "journal", "pray", "read", "routine", "habit", "night routine", "log" → Habits
    - Everything else → Business
 6. Create each task in Notion: `data_source_id: 71a77568-d779-42df-90fc-d8c5b402bdaa`, tomorrow's date, Type = "Task", Done = false.
 7. Run the calendar blocker for tomorrow's new tasks:
