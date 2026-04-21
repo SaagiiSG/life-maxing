@@ -166,8 +166,8 @@ Example: 2/5 done → `🟩🟩⬜⬜⬜  2 / 5 done (40%)`
   "command": "update_content",
   "content_updates": [
     {
-      "old_str": "<callout icon=\"📊\" color=\"blue_bg\">\n**Today's Progress — <previous date>**\n<previous bar>\n</callout>",
-      "new_str": "<callout icon=\"📊\" color=\"blue_bg\">\n**Today's Progress — <YYYY-MM-DD>**\n<bar>  <done> / <total> done (<pct>%)\n</callout>"
+      "old_str": "\t**Today's Progress — <previous date>**\n\t<previous bar>",
+      "new_str": "\t**Today's Progress — <YYYY-MM-DD>**\n\t<bar>  <done> / <total> done (<pct>%)"
     }
   ]
 }
