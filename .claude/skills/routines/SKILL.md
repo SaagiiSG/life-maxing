@@ -145,3 +145,33 @@ If Step 4 ran (new tasks were created), append a calendar summary after the comp
 
 If any task couldn't fit: `⚠️ Couldn't schedule: {task name} — window full`
 If Step 4 was skipped (tasks pre-existed): omit the calendar section entirely.
+
+## Step 6: Update progress bar in Notion
+
+After displaying status, update the progress bar callout on the Habit Tracker page.
+
+**Calculate:**
+- `done` = count of today's tasks where Done = true
+- `total` = total count of today's tasks
+- `pct` = round(done / total * 100)
+- `bar` = `done` filled blocks (🟩) + `(total - done)` empty blocks (⬜), up to `total` blocks max
+
+Example: 2/5 done → `🟩🟩⬜⬜⬜  2 / 5 done (40%)`
+
+**Update the Habit Tracker page** (`fa0dd361-4960-4c30-a7b2-6b3374c7029f`) using `mcp__claude_ai_Notion__notion-update-page` with `update_content` command:
+
+```json
+{
+  "page_id": "fa0dd361-4960-4c30-a7b2-6b3374c7029f",
+  "command": "update_content",
+  "content_updates": [
+    {
+      "old_str": "<callout icon=\"📊\" color=\"blue_bg\">\n**Today's Progress — <previous date>**\n<previous bar>\n</callout>",
+      "new_str": "<callout icon=\"📊\" color=\"blue_bg\">\n**Today's Progress — <YYYY-MM-DD>**\n<bar>  <done> / <total> done (<pct>%)\n</callout>"
+    }
+  ]
+}
+```
+
+Match the old_str by looking for the callout that starts with `**Today's Progress`. Replace it with the updated date and bar.
+If all done: use `🎯 All done! 🟩🟩🟩🟩🟩  <total> / <total> (100%)` instead.
