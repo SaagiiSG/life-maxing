@@ -158,11 +158,11 @@ After displaying status, update the progress bar callout on the Habit Tracker pa
 
 Example: 2/5 done → `🟩🟩⬜⬜⬜  2 / 5 done (40%)`
 
-**Update the Habit Tracker page** (`fa0dd361-4960-4c30-a7b2-6b3374c7029f`) using `mcp__claude_ai_Notion__notion-update-page` with `update_content` command:
+**Update the Lifemaxxing page** (`349844cd-69d1-8114-b2d0-f265146bd457`) using `mcp__claude_ai_Notion__notion-update-page` with `update_content` command:
 
 ```json
 {
-  "page_id": "fa0dd361-4960-4c30-a7b2-6b3374c7029f",
+  "page_id": "349844cd-69d1-8114-b2d0-f265146bd457",
   "command": "update_content",
   "content_updates": [
     {
