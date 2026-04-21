@@ -39,18 +39,17 @@ After building the two lists, also set:
 ## Step 2: Calculate and update XP
 
 **XP rules:**
-- Each done task = +10 XP
+- Each task has an `XP` number property set when created (base 10 + 5 if Academic + 5 if Habit)
+- Sum the XP column of all done tasks
 - All tasks done (0 undone) = +50 bonus
-- Each done Academic area task = +5 bonus
-- Each done Habit type task that is done = +5 bonus
 
 **Calculation:**
 ```
-xp_today = (len(done_tasks) × 10)
-           + (5 × count of done tasks where area == "Academic")
-           + (5 × count of done tasks where type == "Habit")
+xp_today = sum of XP property for each task in done_tasks
 if len(undone_tasks) == 0: xp_today += 50
 ```
+
+If a task has no XP value set (old row), fall back to: 10 + (5 if academic) + (5 if habit).
 
 **Read XP state from Obsidian:**
 Use Obsidian MCP to read `00-RAW/gamification/state.md`.

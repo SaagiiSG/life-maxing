@@ -51,6 +51,13 @@ Read `brain/daily/today.md`. Extract each bullet under `## Tasks` (strip the lea
 - Mentions "SAT", "university", "academic", "tutor", "Duolingo" → Academic
 - Everything else → Business
 
+**XP per task (matches evening-debrief formula):**
+- Base: 10 XP
+- +5 if Area = "Academic"
+- +5 if Type = "Habit"
+
+Calculate `xp` for each task before creating it.
+
 Create each page with:
 ```json
 {
@@ -60,7 +67,8 @@ Create each page with:
     "Date": { "date": { "start": "<YYYY-MM-DD>" } },
     "Done": { "checkbox": false },
     "Area": { "select": { "name": "<area>" } },
-    "Type": { "select": { "name": "<type>" } }
+    "Type": { "select": { "name": "<type>" } },
+    "XP": { "number": <xp> }
   }
 }
 ```
@@ -114,17 +122,18 @@ After fetching all today's tasks (whether pre-existing or just created), display
 📋 Today's Routines — [Weekday, Month DD]
 
 Physique
-  ✅ Gym session        ← Done = true
-  ☐  Gym session        ← Done = false
+  ✅ Gym session           10 XP   ← Done = true
+  ☐  Gym session           10 XP   ← Done = false
 
 Habits
-  ✅ Night routine (log, read, journal, pray)
-  ☐  Content post (IG)
+  ✅ Night routine (log, read, journal, pray)   15 XP
+  ☐  Content post (IG)     10 XP
 
 Business
-  ☐  Pick next Claude/Cowork system to build
+  ☐  Pick next Claude/Cowork system to build    10 XP
 
-[X / Y done]  →  tick tasks off in Notion on your phone. Run /routines again to refresh.
+[X / Y done]  ·  ⚡ [sum of done XP] / [sum of total XP] XP today
+→ tick tasks off in Notion on your phone. Run /routines again to refresh.
 ```
 
 Rules:
