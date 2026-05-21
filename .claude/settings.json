@@ -1,4 +1,16 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__Notion__notion-fetch",
+      "mcp__Notion__notion-search",
+      "mcp__Notion__notion-create-pages",
+      "mcp__Notion__notion-update-page",
+      "mcp__Google-Calendar__list_events",
+      "mcp__Google-Calendar__create_event",
+      "mcp__Slack-ec43f02c__slack_search_channels",
+      "mcp__Slack-ec43f02c__slack_send_message"
+    ]
+  },
   "hooks": {
     "Stop": [
       {
