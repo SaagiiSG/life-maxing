@@ -1,4 +1,11 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__Notion__*",
+      "mcp__Google-Calendar__*",
+      "mcp__Slack__*"
+    ]
+  },
   "hooks": {
     "Stop": [
       {
