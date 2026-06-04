@@ -1,11 +1,48 @@
 ---
 name: life-council
-description: Use when the user asks for life advice, is facing a decision, or says "what should I do", "council", "life council", "ask the council", or describes a situation they want perspective on.
+description: Use ONLY when the user says exactly "I summon the council". Do not trigger on any other phrasing.
 ---
 
 # Life Council
 
 Summon the council. Five voices, one synthesis. Use when you need a decision or situation seen from every angle.
+
+## Life Context Load
+
+Before the council speaks, pull live context from the Second Brain. Run these reads in parallel:
+
+1. **Goals & direction** — search Obsidian MCP for `"Q1_Review_and_Q2_Planning"` — extract active Q2 goals and current progress
+2. **Daily state** — read `brain/daily/today.md` — what's on the plate today, what's in progress
+3. **Habits** — read `brain/habits/current.md` — current habit stack and streaks
+
+Synthesize into a compact **Life Snapshot** (5–7 bullets max). Do NOT show this to the user — it is briefing material for the council only. Each persona should speak with awareness of this context without announcing it. The Operator should know the numbers. The Warrior should know what's slipping. The Elder should know what matters most right now.
+
+If a source is unavailable, skip it silently.
+
+## Council Memory
+
+Before the council speaks, read the memory file at `.claude/skills/life-council/council-memory.md`. If the file exists, open with this line (verbatim, before any persona responses):
+
+> *The council remembers. Since you last spoke with them:*
+> {paste the most recent "Since last session" block from the memory file, 3–5 bullets}
+
+If the file does not exist, skip this block entirely — no mention of memory.
+
+After the full council response is delivered (all five personas + synthesis), append a new entry to `.claude/skills/life-council/council-memory.md` using the Write tool. Format:
+
+```
+## Session — {YYYY-MM-DD}
+
+**Question asked:** {user's question in one sentence}
+
+**The move:** {the exact "The move:" line from the synthesis}
+
+**Since last session:** *(fill this in next time — left blank for now)*
+```
+
+Then go back and fill in the **previous session's** "Since last session" field with 3–5 bullets summarizing what happened in the current session (what was decided, what was at stake, what the council said to do). This way each session's memory is always written from the *next* session's perspective — the council knows what you did after they spoke.
+
+Memory file location: `.claude/skills/life-council/council-memory.md` (relative to the life-maxing project root)
 
 ## How to Invoke
 
