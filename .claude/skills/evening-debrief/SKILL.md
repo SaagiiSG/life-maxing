@@ -88,7 +88,7 @@ For each undone task, ask the user (grouped is fine):
 
 Process their answers:
 - **done** → use `mcp__claude_ai_Notion__notion-update-page` to set Done = true on that page. Add 10 XP to xp_today (re-check all-done bonus).
-- **tomorrow** → use `mcp__claude_ai_Notion__notion-create-pages` to create a copy with tomorrow's date (same Name, Area, Type; Done = false).
+- **tomorrow** → use `mcp__claude_ai_Notion__notion-create-pages` to create a copy with tomorrow's date (same Name, Area, Type, XP; Done = false). Carry over the original task's XP value.
 - **drop** → acknowledge, no Notion change.
 
 After processing, update:
@@ -104,6 +104,12 @@ Before writing, compute:
 - `new_level` = the level determined from the new total XP
 - If `new_level > old_level`, set `level_up = true` (used in Step 5 summary)
 
+**Also update `brain/vault/Dashboard.md` directly (Read then Edit):**
+- `## ⚡ Status` table: update Level, XP (e.g. `325 / 500`), XP Bar (█ filled = floor(xp_in_level / level_range × 10)), Streak
+- `## 📊 This Week` table: add a row for today (Day label, done_final, missed, xp_today)
+- `## 🏆 XP Log` table: append a new row (date, summary like "X tasks done, Y missed", +xp_today, new total)
+- `*Last updated:*` line: set to today's date
+
 ## Step 4: Plan tomorrow
 
 1. Get tomorrow's date (today + 1 day, format YYYY-MM-DD).
@@ -118,7 +124,7 @@ Before writing, compute:
    - Mentions "SAT", "university", "academic", "tutor", "Duolingo" → Academic
    - Mentions "journal", "pray", "read", "routine", "habit", "night routine", "log" → Habits
    - Everything else → Business
-6. Create each task in Notion: `data_source_id: 71a77568-d779-42df-90fc-d8c5b402bdaa`, tomorrow's date, Type = "Task", Done = false.
+6. Create each task in Notion: `data_source_id: 71a77568-d779-42df-90fc-d8c5b402bdaa`, tomorrow's date, Type = "Task", Done = false. Always set XP using the same rule as /routines: `XP = 10 + (5 if Academic) + (5 if Habits)`.
 7. Run the calendar blocker for tomorrow's new tasks:
    - Use `mcp__claude_ai_Google_Calendar__list_events` to fetch tomorrow's existing events (calendarId: primary, Asia/Ulaanbaatar timezone).
    - Area → time block mapping:
